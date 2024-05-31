@@ -1,0 +1,22 @@
+{
+    "type": "java",
+    "name": "Launch ConsoleUI",
+    "request": "launch",
+    "mainClass": "com.amstramgram.ui.ConsoleUI",
+    "projectName": "Amstramgram",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch External Terminal",
+            "request": "launch",
+            "console": "externalTerminal",
+            "mainClass": ""
+        },
+    {
+        "type": "java",
+        "name": "Launch Java Program",
+        "request": "launch",
+        "mainClass": ""
+    }
+    ]
+}
