@@ -39,4 +39,12 @@ public class AmstramgramService {
     public void commenter(Utilisateur auteur, Publication publication, String texte) {
         publication.addCommentaire(new Commentaire(auteur, publication, texte));
     }
+
+    public List<Utilisateur> getUtilisateurs() {
+        return utilisateurs;
+    }
+
+    public List<Publication> getPublications() {
+        return publications;
+    }
 }
