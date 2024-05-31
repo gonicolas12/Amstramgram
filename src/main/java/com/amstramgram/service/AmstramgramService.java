@@ -12,8 +12,16 @@ public class AmstramgramService {
     private List<Publication> publications = new ArrayList<>();
 
     public void inscrireUtilisateur(String username, String password) {
+        for (Utilisateur utilisateur : utilisateurs) {
+            if (utilisateur.getUsername().equals(username)) {
+                System.out.println("Ce nom d'utilisateur est déjà pris.");
+                return; // Sort de la méthode si le nom d'utilisateur existe déjà
+            }
+        }
         utilisateurs.add(new Utilisateur(username, password));
+        System.out.println("Utilisateur inscrit avec succès!");
     }
+
 
     public Utilisateur connecterUtilisateur(String username, String password) {
         for (Utilisateur u : utilisateurs) {
