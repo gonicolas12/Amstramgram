@@ -1,6 +1,6 @@
 # Projet Amstramgram
 
-Le projet Amstramgram est une plateforme de partage de photos inspirée d'Instagram, permettant aux utilisateurs de publier, de commenter et de liker des photos dans une interface simplifiée.
+Le projet Amstramgram est une plateforme de partage de photos inspirée d'Instagram, permettant aux utilisateurs de publier, de commenter, de liker et de retirer des likes de photos dans une interface simplifiée.
 
 ## Technologies
 
@@ -16,9 +16,11 @@ Le projet Amstramgram est une plateforme de partage de photos inspirée d'Instag
 ## Fonctionnalités
 
 - **Création de compte et connexion**: Permet aux utilisateurs de créer un compte et de se connecter.
-- **Affichage des publications**: Affiche les photos publiées par les utilisateurs avec des options pour les liker ou les commenter.
+- **Affichage des publications**: Affiche les photos publiées par les utilisateurs avec des options pour les liker, retirer un like, ou les commenter.
 - **Gestion des utilisateurs**: Les utilisateurs peuvent modifier leur profil ou supprimer leur compte.
-- **Interaction avec les posts**: Les utilisateurs peuvent commenter et liker les posts.
+- **Interaction avec les posts**: Les utilisateurs peuvent commenter, liker ou retirer un like des posts.
+- **Visualisation des commentaires**: Permet aux utilisateurs de voir tous les commentaires associés à chaque publication.
+- **Gestion des likes**: Empêche les utilisateurs de liker plusieurs fois la même publication et permet de retirer un like précédemment donné.
 
 ## Lancement du Projet
 
