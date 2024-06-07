@@ -37,15 +37,17 @@ Pour démarrer le projet Amstramgram, assurez-vous d'avoir Java installé sur vo
    git clone https://github.com/gonicolas12/Amstramgram.git
    cd amstramgram
     ```
+
 2. **Compilez le code** avec la commande suivante :
 
    ```bash
    javac *.java
    ```
+
 3. **Lancez l'application** avec la commande suivante :
 
    ```bash
-    java ConsoleUI
+   java ConsoleUI
     ```
 
 ### Auteurs :
