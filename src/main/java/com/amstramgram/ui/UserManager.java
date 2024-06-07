@@ -21,14 +21,24 @@ public class UserManager {
     public void inscrireUtilisateur() {
         System.out.println("Nom d'utilisateur:");
         String username = scanner.nextLine().trim();
+        if (username.isEmpty()) {
+            System.out.println("Le nom d'utilisateur ne peut pas être vide.");
+            return;
+        }
+
         System.out.println("Mot de passe:");
         String password = scanner.nextLine().trim();
+        if (password.isEmpty()) {
+            System.out.println("Le mot de passe ne peut pas être vide.");
+            return;
+        }
+
         service.inscrireUtilisateur(username, password);
     }
 
     public void connecterUtilisateur() {
         if (utilisateurConnecte != null) {
-            System.out.println("Vous êtes déjà connecté.");
+            System.out.println("Vous êtes déjà connecté à un compte.");
             return;
         }
         System.out.println("Nom d'utilisateur:");

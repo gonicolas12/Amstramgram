@@ -30,7 +30,7 @@ public class PostManager {
 
     public void commenter(Utilisateur utilisateurConnecte) {
         if (utilisateurConnecte == null) {
-            System.out.println("Vous devez être connecté pour commenter.");
+            System.out.println("Vous devez être connecté à un compte pour commenter.");
             return;
         }
         List<Publication> publications = service.getPublications();
