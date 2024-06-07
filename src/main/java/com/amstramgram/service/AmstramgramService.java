@@ -47,4 +47,8 @@ public class AmstramgramService {
     public List<Publication> getPublications() {
         return publications;
     }
+
+    public void aimerPublication(Utilisateur utilisateur, Publication publication) {
+        publication.ajouterLike(utilisateur);
+    }
 }

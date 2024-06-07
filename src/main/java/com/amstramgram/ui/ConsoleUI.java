@@ -16,7 +16,7 @@ public class ConsoleUI {
 
     public void start() {
         while (true) {
-            System.out.println("1. S'inscrire\n2. Se connecter\n3. Poster\n4. Commenter\n5. Se déconnecter\n6. Quitter");
+            System.out.println("1. S'inscrire\n2. Se connecter\n3. Publications\n4. Se déconnecter\n5. Quitter");
             int choix = scanner.nextInt();
             scanner.nextLine(); // Nettoie le buffer
 
@@ -28,18 +28,32 @@ public class ConsoleUI {
                     userManager.connecterUtilisateur();
                     break;
                 case 3:
-                    postManager.poster(userManager.getUtilisateurConnecte());
+                    gestionPublications();
                     break;
                 case 4:
-                    postManager.commenter(userManager.getUtilisateurConnecte());
-                    break;
-                case 5:
                     userManager.seDeconnecter();
                     break;
-                case 6:
+                case 5:
                     System.exit(0);
                     break;
             }
+        }
+    }
+
+    private void gestionPublications() {
+        System.out.println("1. Poster\n2. Voir Publications\n3. Quitter");
+        int choix = scanner.nextInt();
+        scanner.nextLine(); // Nettoie le buffer
+
+        switch (choix) {
+            case 1:
+                postManager.poster(userManager.getUtilisateurConnecte());
+                break;
+            case 2:
+                postManager.afficherPublications(userManager.getUtilisateurConnecte());
+                break;
+            case 3:
+                return; // Retour au menu principal
         }
     }
 
