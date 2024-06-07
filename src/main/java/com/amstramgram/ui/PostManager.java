@@ -16,6 +16,10 @@ public class PostManager {
     }
 
     public void poster(Utilisateur utilisateurConnecte) {
+        if (utilisateurConnecte == null) {
+            System.out.println("Vous devez être connecté pour poster.");
+            return;
+        }
         System.out.println("Chemin de l'image:");
         String image = scanner.nextLine().trim();
         System.out.println("Description:");
@@ -25,6 +29,10 @@ public class PostManager {
     }
 
     public void commenter(Utilisateur utilisateurConnecte) {
+        if (utilisateurConnecte == null) {
+            System.out.println("Vous devez être connecté pour commenter.");
+            return;
+        }
         List<Publication> publications = service.getPublications();
         if (publications.isEmpty()) {
             System.out.println("Il n'y a pas de publications à commenter.");

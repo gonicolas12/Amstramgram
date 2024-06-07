@@ -27,6 +27,10 @@ public class UserManager {
     }
 
     public void connecterUtilisateur() {
+        if (utilisateurConnecte != null) {
+            System.out.println("Vous êtes déjà connecté.");
+            return;
+        }
         System.out.println("Nom d'utilisateur:");
         String usernameLogin = scanner.nextLine().trim();
         System.out.println("Mot de passe:");
