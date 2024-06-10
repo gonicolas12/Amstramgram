@@ -1,6 +1,7 @@
 package com.amstramgram.ui;
 
 import com.amstramgram.service.AmstramgramService;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleUI {
@@ -17,43 +18,25 @@ public class ConsoleUI {
     public void start() {
         while (true) {
             System.out.println("1. S'inscrire\n2. Se connecter\n3. Publications\n4. Se déconnecter\n5. Quitter");
-            int choix = scanner.nextInt();
-            scanner.nextLine(); // Nettoie le buffer
+            System.out.print("Entrez votre choix : ");
+            int choix = 0;
+            try {
+                choix = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Erreur : veuillez entrer un nombre valide.");
+                scanner.nextLine();  // Nettoie le buffer
+                continue;
+            }
+            scanner.nextLine();  // Nettoie le buffer après la lecture d'un int
 
             switch (choix) {
-                case 1:
-                    userManager.inscrireUtilisateur();
-                    break;
-                case 2:
-                    userManager.connecterUtilisateur();
-                    break;
-                case 3:
-                    gestionPublications();
-                    break;
-                case 4:
-                    userManager.seDeconnecter();
-                    break;
-                case 5:
-                    System.exit(0);
-                    break;
+                case 1: userManager.inscrireUtilisateur(); break;
+                case 2: userManager.connecterUtilisateur(); break;
+                case 3: postManager.gestionPublications(userManager.getUtilisateurConnecte()); break;
+                case 4: userManager.seDeconnecter(); break;
+                case 5: System.out.println("Au revoir !"); System.exit(0); break;
+                default: System.out.println("Choix invalide, veuillez réessayer."); break;
             }
-        }
-    }
-
-    private void gestionPublications() {
-        System.out.println("1. Poster\n2. Voir Publications\n3. Quitter");
-        int choix = scanner.nextInt();
-        scanner.nextLine(); // Nettoie le buffer
-
-        switch (choix) {
-            case 1:
-                postManager.poster(userManager.getUtilisateurConnecte());
-                break;
-            case 2:
-                postManager.afficherPublications(userManager.getUtilisateurConnecte());
-                break;
-            case 3:
-                return; // Retour au menu principal
         }
     }
 

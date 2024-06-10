@@ -4,6 +4,7 @@ import com.amstramgram.model.Publication;
 import com.amstramgram.model.Utilisateur;
 import com.amstramgram.model.Commentaire;
 import com.amstramgram.service.AmstramgramService;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,6 +15,36 @@ public class PostManager {
     public PostManager(AmstramgramService service, Scanner scanner) {
         this.service = service;
         this.scanner = scanner;
+    }
+
+    public void gestionPublications(Utilisateur utilisateurConnecte) {
+        while (true) {
+            System.out.println("1. Poster\n2. Voir Publications\n3. Quitter");
+            System.out.print("Entrez votre choix : ");
+            int choix;
+            try {
+                choix = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Erreur : veuillez entrer un nombre valide.");
+                scanner.nextLine();  // Nettoie le buffer
+                continue;
+            }
+            scanner.nextLine();  // Nettoie le buffer après la lecture d'un int
+
+            switch (choix) {
+                case 1:
+                    poster(utilisateurConnecte);
+                    break;
+                case 2:
+                    afficherPublications(utilisateurConnecte);
+                    break;
+                case 3:
+                    return;  // Retour au menu principal
+                default:
+                    System.out.println("Choix invalide, veuillez réessayer.");
+                    break;
+            }
+        }
     }
 
     public void afficherPublications(Utilisateur utilisateurConnecte) {
@@ -33,16 +64,24 @@ public class PostManager {
                 }
             }
         }
-        System.out.println("Choisissez une publication (numéro) pour interagir ou -1 pour quitter:");
-        int choix = scanner.nextInt();
-        scanner.nextLine();  // Nettoie le buffer
-
-        if (choix == -1) {
-            return;  // Retour au menu précédent
-        } else if (choix >= 0 && choix < publications.size()) {
-            interactionPublication(utilisateurConnecte, publications.get(choix));
-        } else {
-            System.out.println("Sélection invalide, veuillez réessayer.");
+        int choix = 0;
+        while (true) {
+            System.out.println("Choisissez une publication (numéro) pour interagir, -1 pour quitter ou retour au menu principal:");
+            try {
+                choix = scanner.nextInt();
+                if (choix == -1) {
+                    return;  // Retour au menu précédent
+                }
+                if (choix >= 0 && choix < publications.size()) {
+                    interactionPublication(utilisateurConnecte, publications.get(choix));
+                    break; // Sortir de la boucle après l'interaction
+                } else {
+                    System.out.println("Sélection invalide, veuillez réessayer.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Erreur : veuillez entrer un numéro valide.");
+                scanner.nextLine();  // Nettoie le buffer de toute entrée incorrecte
+            }
         }
     }
 
